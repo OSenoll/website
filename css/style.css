@@ -129,7 +129,10 @@ h1, h3, h4, h5, h6 {
 }
 h2 {
   font-family: "octin sports", sans-serif;
+  padding-top: 80px;
+  padding-bottom: 50px;
 }
+
 .heading_container h2 {
   position: relative;
   font-weight: bold;
