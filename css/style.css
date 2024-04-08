@@ -197,6 +197,42 @@ h2 {
   border: 2px solid #03C4EB;
 }
 
+#hero .btn-language {
+  background: #bf1414;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+#hero .btn-language:hover {
+  background: none;
+  border: 2px solid #fff;
+  color: #fff;
+}
+.dropdown-menu {
+  background-color: #fff; /* Arka plan rengi */
+  border: 1px solid #ccc; /* Kenarlık rengi */
+  border-radius: 4px; /* Kenarlık yuvarlaklığı */
+}
+
+.dropdown-item {
+  color: #333; /* Metin rengi */
+  padding: 8px 16px; /* İç boşluklar */
+  transition: background-color 0.3s; /* Geçiş efekti */
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #f5f5f5; /* Hover/focus arka plan rengi */
+}
+
+.dropdown-toggle::after {
+  vertical-align: 0.5em; /* İkon düzgün hizalama */
+}
+
+.dropdown-menu.show {
+  display: block; /* Dropdown menüsünü göster */
+}
+
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
