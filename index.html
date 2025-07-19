@@ -1,1088 +1,1491 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <title>ALFAS</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALFAS - Aluminum & Facade Systems Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Place your favicon.ico and apple-touch-icon.png in the template root directory -->
-  <link href="img/favicon.ico" rel="shortcut icon">
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-  <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet" />
-  <!-- lightbox Gallery-->
-  <link rel="stylesheet" href="css/ekko-lightbox.css" />
-  <!-- font awesome style -->
-  <link href="css/font-awesome.min.css" rel="stylesheet" />
-  <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
-  <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: #0a0a0a;
+            overflow-x: hidden;
+        }
 
-  <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate-css/animate.min.css" rel="stylesheet">
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
 
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 0.8rem;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            filter: brightness(1.2);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #e0e0e0;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #e0e0e0;
+        }
+
+        /* Language Selector */
+        .language-selector {
+            position: relative;
+            margin-left: 1rem;
+        }
+
+        .language-btn {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            color: #e0e0e0;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .language-btn:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+            transform: translateY(-2px);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 10px;
+            padding: 0.5rem 0;
+            min-width: 150px;
+            display: none;
+            z-index: 1001;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .language-dropdown.show {
+            display: block;
+        }
+
+        .language-option {
+            padding: 0.7rem 1rem;
+            color: #e0e0e0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .language-option:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            color: #667eea;
+        }
+
+        .language-option.active {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+            color: #667eea;
+        }
+
+        .flag-icon {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .flag-en { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="%23012169"/><g stroke="%23fff" stroke-width="6"><path d="m0,0 60,30M60,0 0,30"/></g><g stroke="%23C8102E" stroke-width="4"><path d="m0,0 60,30M60,0 0,30"/></g><g stroke="%23fff" stroke-width="10"><path d="M30,0v30M0,15h60"/></g><g stroke="%23C8102E" stroke-width="6"><path d="M30,0v30M0,15h60"/></g></svg>'); }
+        
+        .flag-ru { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="10" fill="%23fff"/><rect y="10" width="60" height="10" fill="%230039A6"/><rect y="20" width="60" height="10" fill="%23D52B1E"/></svg>'); }
+        
+        .flag-tr { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="%23E30A17"/><circle cx="17" cy="15" r="6" fill="none" stroke="%23fff" stroke-width="1.2"/><circle cx="19" cy="15" r="4.8" fill="%23E30A17"/><polygon points="26,11 28,13 31,12 29,15 31,18 28,17 26,19 27,16 24,15 27,14" fill="%23fff"/></svg>'); }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="rgba(102,126,234,0.1)"/><stop offset="100%" stop-color="rgba(0,0,0,0)"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="400" cy="700" r="120" fill="url(%23a)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            background: linear-gradient(135deg, #ffffff, #667eea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.2s both;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s both;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+            color: #fff;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            color: #ffffff;
+            background: linear-gradient(135deg, #ffffff, #667eea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(102,126,234,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border: 2px solid rgba(102, 126, 234, 0.2);
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+        }
+
+        .project-location {
+            color: #b0b0b0;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .project-location i {
+            color: #667eea;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            color: #667eea;
+            padding: 0.4rem 1rem;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .gallery-preview {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .gallery-thumb {
+            width: 100%;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .gallery-thumb:hover {
+            transform: scale(1.1);
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .view-all-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .view-all-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+            color: white;
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="b" cx="50%" cy="50%"><stop offset="0%" stop-color="rgba(102,126,234,0.1)"/><stop offset="100%" stop-color="rgba(0,0,0,0)"/></radialGradient></defs><circle cx="100" cy="800" r="200" fill="url(%23b)"/><circle cx="900" cy="200" r="150" fill="url(%23b)"/></svg>');
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-item {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.8), rgba(42, 42, 42, 0.8));
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #000000;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 1s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .language-selector {
+                margin-left: 0;
+                margin-right: 1rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #3498db;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+        }
+    </style>
 </head>
 
 <body>
-  <div id="preloader"></div>
-
-  <!--==========================
-  Hero Section
-  ============================-->
-  <section id="hero">
-    <div class="hero-container">
-      <div class="wow fadeIn">
-        <div class="hero-logo">
-          <img class="" src="img/icon.png" alt="ALFAS" width="300" height="300">
-        </div>
-
-        <h1>Welcome to ALFAS</h1>
-        <h2>We make <span class="rotating">composite panel, aluminium facade systems  </span></h2>
-        <div class="actions">
-          <a href="#about" class="btn-get-started">Get Strated</a>
-          <a href="#services" class="btn-services">Our Services</a>
-          <a href="language" class="btn-language">Language</a>
-        </div>
-      </div>
-    </div>    
-  </section>
-
-  <!--==========================
-  Header Section
-  ============================-->
-  <header id="header">
-    <div class="container">
-
-      <div id="logo" class="pull-left">
-        <a href="#hero"><img src="img/icon.png" alt="" title="" /></img></a>
-        <!-- Uncomment below if you prefer to use a text image -->
-        <!--<h1><a href="#hero">Header 1</a></h1>-->
-      </div>
-
-      <nav id="nav-menu-container">
-        <ul class="nav-menu">
-          <li class="menu-active"><a href="#hero">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#contact">Contact Us</a></li>
-        </ul>
-      </nav>
-      <!-- #nav-menu-container -->
-    </div>
-  </header>
-  <!-- #header -->
-
-  <!--==========================
-  About Section
-  ============================-->
-  <section id="about">
-    <div class="container wow fadeInUp">
-      <div class="row">
-        <div class="col-md-12">
-          <h3 class="section-title">About Us</h3>
-          <div class="section-title-divider"></div>
-          <p class="section-description">With years of experience in the aluminum industry, we take pride in offering our customers high-quality products and excellent service</p>
-        </div>
-      </div>
-    </div>
-    <div class="container about-container wow fadeInUp">
-      <div class="row">
-
-        <div class="col-lg-6 about-img">
-          <img src="img/IMG-20170823-WA0007.jpg" alt="" width="555" height="435">
-        </div>
-
-        <div class="col-md-6 about-content">
-          <h2 class="about-title">We provide great services and ideas</h2>
-          <p class="about-text">
-            Throughout our journey, we have undertaken numerous projects, both at home and abroad, honing our skills and refining our approach. From small-scale ventures to large-scale endeavors, we have left our mark with precision and dedication.
-As we look to the future, we remain steadfast in our dedication to excellence and innovation. Every client is not just a customer but a part of our extended family, and we are dedicated to fostering lasting relationships built on trust and mutual success.
-Explore our website for more information, and let us show you the difference that generations of experience can make.
-          </p>
-          <p class="about-text">
-            
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--==========================
-  Services Section
-  ============================-->
-  <section id="services">
-    <div class="container wow fadeInUp">
-      <div class="row">
-        <div class="col-md-12">
-          <h3 class="section-title">Our Services</h3>
-          <div class="section-title-divider"></div>
-          <p class="section-description">From aluminum design to expert fabrication, we deliver unparalleled craftsmanship and personalized service to meet your every need.</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-4 service-item">
-          <div class="service-icon"><i class="fa fa-globe"></i></div>
-          <h4 class="service-title"><a href="">Consultancy</a></h4>
-          <p class="service-description">we offer tailored solutions to optimize your operations and enhance your aluminum-related ventures.</p>
-        </div>
-        <div class="col-md-4 service-item">
-          <div class="service-icon"><i class="fa fa-globe"></i></div>
-          <h4 class="service-title"><a href="">Aluminum Glass Facade Systems</a></h4>
-          <p class="service-description">aluminum glass facade systems provide innovative solutions for modern structures</p>
-        </div>
-        <div class="col-md-4 service-item">
-          <div class="service-icon"><i class="fa fa-globe "></i></div>
-          <h4 class="service-title"><a href="">Composite Facade Cladding Systems</a></h4>
-          <p class="service-description">composite ceramic granite facade cladding systems redefine architectural excellence with innovative solutions</p>
-        </div>
-        <div class="col-md-4 service-item">
-          <div class="service-icon"><i class="fa fa-globe"></i></div>
-          <h4 class="service-title"><a href="">Pergola and Guillotine Systems</a></h4>
-          <p class="service-description">Enhance your outdoor spaces with our versatile pergola and guillotine systems, combining functionality with elegant design for unparalleled comfort and style</p>
-        </div>
-        <div class="col-md-4 service-item">
-          <div class="service-icon"><i class="fa fa-globe"></i></div>
-          <h4 class="service-title"><a href="">Aluminum Joinery Systems</a></h4>
-          <p class="service-description">Elevate your space with our precision-crafted aluminum joinery systems, combining durability, aesthetics, and energy efficiency for seamless integration into any architectural design</p>
-        </div>
-         </div>
-      </div>
-    </div>
-  </section>
-  <!--==========================
-  Portfolio Section
-============================-->
-<section id="portfolio" class="section-bg">
-  <div class="container wow fadeInUp">
-    <div class="section-header">
-      <h3 class="section-title">Discover Our Work</h3>
-      <div class="section-description">Explore our portfolio showcasing our craftsmanship and innovation.</div>
-    </div>
-</section>
- <!-- gallery section -->
- 
- <div class="gallery_section layout_padding2">
-  <div class="container wow fadeInUp">
-    <div class="heading_container heading_center">
-      <h2>
-        Yaoundé Ministry of Finance Building 2018 Africa Cameroon 
-      </h2>
-    </div>
-    <div class="row">
-      <div class=" col-sm-8 col-md-6 px-0">
-        <div class="img-box">
-          <img src="img/g1.jpg" alt="">
-          <a href="img/g1.jpg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-4 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/g2.jpg" alt="">
-          <a href="img/g2.jpg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/g3.jpeg" alt="">
-          <a href="img/g3.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/g4.jpeg" alt="">
-          <a href="img/g4.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/g6.jpeg" alt="">
-          <a href="img/g6.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-8 col-md-6 px-0">
-        <div class="img-box">
-          <img src="img/g7.jpeg" alt="">
-          <a href="img/g7.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/g8.jpg" alt="">
-          <a href="img/g8.jpg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-8 col-md-6 px-0">
-        <div class="img-box">
-          <img src="img/g9.jpg" alt="">
-          <a href="img/g9.jpg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/g10.JPG" alt="">
-          <a href="img/g10.JPG" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-8 col-md-6 px-0">
-        <div class="img-box">
-          <img src="img/g11.PNG" alt="">
-          <a href="img/g11.PNG" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6 col-md-3 px-0">
-      <div class="img-box">
-        <img src="img/g12.JPG" alt="">
-        <a href="img/g12.JPG" data-toggle="lightbox" data-gallery="gallery">
-          <i class="fa fa-picture-o" aria-hidden="true"></i>
-        </a>
-      </div>
-    </div>
-    <div class="col-sm-8 col-md-6 px-0">
-      <div class="img-box">
-        <img src="img/g13.jpg" alt="">
-        <a href="img/g13.jpg" data-toggle="lightbox" data-gallery="gallery">
-          <i class="fa fa-picture-o" aria-hidden="true"></i>
-        </a>
-      </div>
-    </div>
-    <div class="col-sm-6 col-md-3 px-0">
-      <div class="img-box">
-        <img src="img/g14.jpg" alt="">
-        <a href="img/g14.jpg" data-toggle="lightbox" data-gallery="gallery">
-          <i class="fa fa-picture-o" aria-hidden="true"></i>
-        </a>
-      </div>
-    </div>
-    <div class="col-sm-8 col-md-6 px-0">
-      <div class="img-box">
-        <img src="img/g15.jpg" alt="">
-        <a href="img/g15.jpg" data-toggle="lightbox" data-gallery="gallery">
-          <i class="fa fa-picture-o" aria-hidden="true"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- end gallery section -->
-<!-- gallery2 section -->
- 
-<div class="gallery_section layout_padding2">
-  <div class="container wow fadeInUp">
-    <div class="heading_container heading_center">
-      <h2>
-        ART Telecommunications Regulatory Agency 2021 Yaoundé, Cameroon 
-      </h2>
-    </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/a3.jpeg" alt="">
-          <a href="img/a3.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/a4.jpeg" alt="">
-          <a href="img/a4.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-4 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/a5.jpeg" alt="">
-          <a href="img/a5.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/a6.jpeg" alt="">
-          <a href="img/a6.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-8 col-md-6 px-0">
-        <div class="img-box">
-          <img src="img/a7.jpeg" alt="">
-          <a href="img/a7.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/a9.jpeg" alt="">
-          <a href="img/a9.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/a10.jpg" alt="">
-          <a href="img/a10.jpg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/a11.jpg" alt="">
-          <a href="img/a11.jpg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- end gallery section -->
-<!-- gallery2 section -->
- 
-<div class="gallery_section layout_padding2">
-  <div class="container wow fadeInUp">
-    <div class="heading_container heading_center">
-      <h2>
-        Aris Grand Tower Residence 2016 Istanbul Türkiye
-      </h2>
-    </div>
-      <div class="col-sm-4 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/b2.jpeg" alt="">
-          <a href="img/b2.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/b3.jpeg" alt="">
-          <a href="img/b3.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/b4.jpeg" alt="">
-          <a href="img/b4.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-4 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/b5.jpeg" alt="">
-          <a href="img/b5.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/b6.jpg" alt="">
-          <a href="img/b6.jpg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-4 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/b7.jpg" alt="">
-          <a href="img/b7.jpg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/b8.jpg" alt="">
-          <a href="img/b8.jpg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <!-- end gallery section -->
-<!-- gallery2 section -->
- 
-<div class="gallery_section layout_padding2">
-  <div class="container wow fadeInUp">
-    <div class="heading_container heading_center">
-      <h2>
-        General Pharmaceutical Administration Building 2012 Ankara
-      </h2>
-    </div>
-    <div class="row">
-      <div class=" col-sm-8 col-md-6 px-0">
-        <div class="img-box">
-          <img src="img/c1.jpeg" alt="">
-          <a href="img/c1.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-4 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/c2.jpeg" alt="">
-          <a href="img/c2.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/c3.jpeg" alt="">
-          <a href="img/c3.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-4 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/c4.JPG" alt="">
-          <a href="img/c4.JPG" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/c5.JPG" alt="">
-          <a href="img/c5.JPG" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <!-- end gallery section -->
-<!-- gallery2 section -->
- 
-<div class="gallery_section layout_padding2">
-  <div class="container wow fadeInUp">
-    <div class="heading_container heading_center">
-      <h2>
-        Seref Büryan Restaurant 2019 Istanbul Turkey
-      </h2>
-    </div>
-    <div class="row">
-      <div class=" col-sm-8 col-md-6 px-0">
-        <div class="img-box">
-          <img src="img/d1.jpeg" alt="">
-          <a href="img/d1.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-4 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/d2.jpeg" alt="">
-          <a href="img/d2.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/d3.jpeg" alt="">
-          <a href="img/d3.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/d4.jpg" alt="">
-          <a href="img/d4.jpg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <!-- end gallery section -->
-<!-- gallery2 section -->
- 
-<div class="gallery_section layout_padding2">
-  <div class="container wow fadeInUp">
-    <div class="heading_container heading_center">
-      <h2>
-        Istanbul Turkey Business Center 2008
-      </h2>
-    </div>
-      <div class="row">
-        <div class=" col-sm-8 col-md-6 px-0">
-          <div class="img-box">
-            <img src="img/f1.jpg" alt="">
-            <a href="img/f1.jpg" data-toggle="lightbox" data-gallery="gallery">
-              <i class="fa fa-picture-o" aria-hidden="true"></i>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <img src="img/icon.png" alt="ALFAS Logo">
+                <span class="logo-text">ALFAS</span>
             </a>
-          </div>
-        </div>
-        <div class="col-sm-4 col-md-3 px-0">
-          <div class="img-box">
-            <img src="img/f2.jpg" alt="">
-            <a href="img/f2.jpg" data-toggle="lightbox" data-gallery="gallery">
-              <i class="fa fa-picture-o" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3 px-0">
-          <div class="img-box">
-            <img src="img/f3.JPG" alt="">
-            <a href="img/f3.JPG" data-toggle="lightbox" data-gallery="gallery">
-              <i class="fa fa-picture-o" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3 px-0">
-          <div class="img-box">
-            <img src="img/f4.JPG" alt="">
-            <a href="img/f4.JPG" data-toggle="lightbox" data-gallery="gallery">
-              <i class="fa fa-picture-o" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3 px-0">
-          <div class="img-box">
-            <img src="img/f5.jpg" alt="">
-            <a href="img/f5.jpg" data-toggle="lightbox" data-gallery="gallery">
-              <i class="fa fa-picture-o" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3 px-0">
-          <div class="img-box">
-            <img src="img/f6.JPG" alt="">
-            <a href="img/f6.JPG" data-toggle="lightbox" data-gallery="gallery">
-              <i class="fa fa-picture-o" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3 px-0">
-          <div class="img-box">
-            <img src="img/f7.JPG" alt="">
-            <a href="img/f7.JPG" data-toggle="lightbox" data-gallery="gallery">
-              <i class="fa fa-picture-o" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-    </div>
-  </div>
-</div>
-
-  <!-- end gallery section -->
-<!-- gallery section -->
- 
-<div class="gallery_section layout_padding2">
-  <div class="container wow fadeInUp">
-    <div class="heading_container heading_center">
-      <h2>
-        Turkish Embassy 2006 Astana Kazakhstan 
-      </h2>
-    </div>
-    <div class="row">
-      <div class=" col-sm-8 col-md-6 px-0">
-        <div class="img-box">
-          <img src="img/e1.jpeg" alt="">
-          <a href="img/e1.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-4 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/e2.jpeg" alt="">
-          <a href="img/e2.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/e3.jpeg" alt="">
-          <a href="img/e3.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/e4.jpeg" alt="">
-          <a href="img/e4.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-4 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/e5.jpeg" alt="">
-          <a href="img/e5.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/e6.jpeg" alt="">
-          <a href="img/e6.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-8 col-md-6 px-0">
-        <div class="img-box">
-          <img src="img/e7.jpeg" alt="">
-          <a href="img/e7.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- end gallery section -->
-<!-- gallery2 section -->
- 
-<div class="gallery_section layout_padding2">
-  <div class="container wow fadeInUp">
-    <div class="heading_container heading_center">
-      <h2>
-        Governor's Office Building 2006 Kostanay Kazakhstan
-      </h2>
-    </div>
-    <div class="row">
-      <div class=" col-sm-8 col-md-6 px-0">
-        <div class="img-box">
-          <img src="img/ı1.jpeg" alt="">
-          <a href="img/ı1.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-4 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/ı2.jpeg" alt="">
-          <a href="img/ı2.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/ı3.jpeg" alt="">
-          <a href="img/ı3.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <!-- end gallery section -->
-  <!-- gallery2 section -->
- 
-<div class="gallery_section layout_padding2">
-  <div class="container wow fadeInUp">
-    <div class="heading_container heading_center">
-      <h2>
-        Kazakistan Astana Hotel 2002
-      </h2>
-    </div>
-    <div class="row">
-      <div class=" col-sm-8 col-md-6 px-0">
-        <div class="img-box">
-          <img src="img/h1.jpeg" alt="">
-          <a href="img/h1.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-4 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/h2.JPG" alt="">
-          <a href="img/h2.JPG" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/h3.JPG" alt="">
-          <a href="img/h3.JPG" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/h4.JPG" alt="">
-          <a href="img/h4.JPG" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/h5.jpg" alt="">
-          <a href="img/h5.jpg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/h6.jpg" alt="">
-          <a href="img/h6.jpg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</div>
-
-  <!-- end gallery section -->
-  <!-- gallery2 section -->
- 
-<div class="gallery_section layout_padding2">
-  <div class="container wow fadeInUp">
-    <div class="heading_container heading_center">
-      <h2>
-        Kazakistan Astana School 2007
-      </h2>
-    </div>
-    <div class="row">
-      <div class=" col-sm-8 col-md-6 px-0">
-        <div class="img-box">
-          <img src="img/r1.jpeg" alt="">
-          <a href="img/r1.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-4 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/r2.jpeg" alt="">
-          <a href="img/r2.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/r3.jpeg" alt="">
-          <a href="img/r3.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/r4.jpeg" alt="">
-          <a href="img/r4.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/r5.JPG" alt="">
-          <a href="img/r5.JPG" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/r6.JPG" alt="">
-          <a href="img/r6.JPG" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <!-- end gallery section -->
-  <!-- gallery2 section -->
- 
-<div class="gallery_section layout_padding2">
-  <div class="container wow fadeInUp">
-    <div class="heading_container heading_center">
-      <h2>
-        Kazakistan Astana Hospital 2007
-      </h2>
-    </div>
-    <div class="row">
-      <div class=" col-sm-8 col-md-6 px-0">
-        <div class="img-box">
-          <img src="img/w1.jpeg" alt="">
-          <a href="img/w1.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-4 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/w2.jpeg" alt="">
-          <a href="img/w2.jpeg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <!-- end gallery section -->
-  <!-- gallery2 section -->
- 
-<div class="gallery_section layout_padding2">
-  <div class="container wow fadeInUp">
-    <div class="heading_container heading_center">
-      <h2>
-        Menza Textile 2014
-      </h2>
-    </div>
-    <div class="row">
-      <div class=" col-sm-8 col-md-6 px-0">
-        <div class="img-box">
-          <img src="img/x1.JPG" alt="">
-          <a href="img/x1.JPG" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-4 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/x2.JPG" alt="">
-          <a href="img/x2.JPG" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="row">
-        <div class=" col-sm-8 col-md-6 px-0">
-          <div class="img-box">
-            <img src="img/x3.jpg" alt="">
-            <a href="img/x3.jpg" data-toggle="lightbox" data-gallery="gallery">
-              <i class="fa fa-picture-o" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-4 col-md-3 px-0">
-          <div class="img-box">
-            <img src="img/x4.jpg" alt="">
-            <a href="img/x4.jpg" data-toggle="lightbox" data-gallery="gallery">
-              <i class="fa fa-picture-o" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-4 col-md-3 px-0">
-          <div class="img-box">
-            <img src="img/x5.jpeg" alt="">
-            <a href="img/x5.jpeg" data-toggle="lightbox" data-gallery="gallery">
-              <i class="fa fa-picture-o" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-    </div>
-  </div>
-</div>
-
-  <!-- end gallery section -->
-<!-- gallery2 section -->
- 
-<div class="gallery_section layout_padding2">
-  <div class="container wow fadeInUp">
-    <div class="heading_container heading_center">
-      <h2>
-        Current Project We are doing in Russia
-      </h2>
-    </div>
-    <div class="row">
-      <div class=" col-sm-8 col-md-6 px-0">
-        <div class="img-box">
-          <img src="img/ax1.jpg" alt="">
-          <a href="img/ax1.jpg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-4 col-md-3 px-0">
-        <div class="img-box">
-          <img src="img/ax2.jpg" alt="">
-          <a href="img/ax2.jpg" data-toggle="lightbox" data-gallery="gallery">
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-      <div class="row">
-        <div class=" col-sm-8 col-md-6 px-0">
-          <div class="img-box">
-            <img src="img/ax3.jpg" alt="">
-            <a href="img/ax3.jpg" data-toggle="lightbox" data-gallery="gallery">
-              <i class="fa fa-picture-o" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-4 col-md-3 px-0">
-          <div class="img-box">
-            <img src="img/ax4.jpg" alt="">
-            <a href="img/ax4.jpg" data-toggle="lightbox" data-gallery="gallery">
-              <i class="fa fa-picture-o" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-4 col-md-3 px-0">
-          <div class="img-box">
-            <img src="img/ax5.jpg" alt="">
-            <a href="img/ax5.jpg" data-toggle="lightbox" data-gallery="gallery">
-              <i class="fa fa-picture-o" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-4 col-md-3 px-0">
-          <div class="img-box">
-            <img src="img/ax6.jpg" alt="">
-            <a href="img/ax6.jpg" data-toggle="lightbox" data-gallery="gallery">
-              <i class="fa fa-picture-o" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-4 col-md-3 px-0">
-          <div class="img-box">
-            <img src="img/ax7.jpeg" alt="">
-            <a href="img/ax7.jpeg" data-toggle="lightbox" data-gallery="gallery">
-              <i class="fa fa-picture-o" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-    </div>
-  </div>
-</div>
-
-  <!-- end gallery section -->
-  <!--==========================
-  Contact Section
-  ============================-->
-  <section id="contact">
-    <div class="container wow fadeInUp">
-      <div class="row">
-        <div class="col-md-12">
-          <h3 class="section-title">Contact Us</h3>
-          <div class="section-title-divider"></div>
-          <p class="section-description">You can contact us with the information below</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-3 col-md-push-2">
-          <div class="info">
-
-            <div>
-              <i class="fa fa-envelope"></i>
-              <p style="text-align: center;">tariksnl01864@gmail.com</p>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="language-selector">
+                <button class="language-btn" onclick="toggleLanguageDropdown()">
+                    <div class="flag-icon flag-en"></div>
+                    <span>EN</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="language-dropdown" id="languageDropdown">
+                    <div class="language-option active" onclick="changeLanguage('en')">
+                        <div class="flag-icon flag-en"></div>
+                        <span>English</span>
+                    </div>
+                    <div class="language-option" onclick="changeLanguage('ru')">
+                        <div class="flag-icon flag-ru"></div>
+                        <span>Русский</span>
+                    </div>
+                    <div class="language-option" onclick="changeLanguage('tr')">
+                        <div class="flag-icon flag-tr"></div>
+                        <span>Türkçe</span>
+                    </div>
+                </div>
             </div>
-          </div>
+            <button class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
+    </nav>
 
-        
-  </section>
-  
-  <!--==========================
-  Footer
-============================-->
-  <footer id="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="copyright">
-            &copy; Copyright <strong>Imperial Theme</strong>. All Rights Reserved
-          </div>
-          <div class="credits">
-            <!--
-              All the links in the footer should remain intact.
-              You can delete the links only if you purchased the pro version.
-              Licensing information: https://bootstrapmade.com/license/
-              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Imperial
-            -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-          </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>ALFAS</h1>
+            <p>Premier Aluminum & Facade Systems - Transforming architectural visions into reality with innovative solutions across the globe</p>
+            <a href="#portfolio" class="cta-button">View Our Work</a>
         </div>
-      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">About ALFAS</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>With over 15 years of experience in the aluminum industry, ALFAS has established itself as a leading provider of innovative facade solutions, composite panels, and architectural systems worldwide.</p>
+                    <p>We have undertaken numerous projects across continents, from Africa to Europe, Asia to the Americas. Our commitment to precision, quality, and innovation has made us the trusted partner for architects, contractors, and developers.</p>
+                    <p>Our expertise includes aluminum glass facade systems, composite facade cladding, pergola systems, and comprehensive project management services.</p>
+                </div>
+                <div class="about-image">
+                    <img src="img/about-img.jpg" alt="ALFAS Company">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section">
+        <div class="container">
+            <h2 class="section-title">Our Portfolio</h2>
+            <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 3rem;">Showcasing excellence in aluminum facade systems across the globe</p>
+            
+            <div class="portfolio-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <img src="img/g1.jpg" alt="Ministry of Finance Building" class="project-image">
+                    <div class="project-info">
+                        <h3 class="project-title">Ministry of Finance Building</h3>
+                        <p class="project-location"><i class="fas fa-map-marker-alt"></i> Yaoundé, Cameroon • 2018</p>
+                        <div class="project-tags">
+                            <span class="tag">Government</span>
+                            <span class="tag">Facade Systems</span>
+                            <span class="tag">Africa</span>
+                        </div>
+                        <div class="gallery-preview">
+                            <img src="img/g2.jpg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/g3.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/g4.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/g6.jpeg" alt="Gallery" class="gallery-thumb">
+                        </div>
+                        <button class="view-all-btn" onclick="openGallery('finance')">View All Photos</button>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <img src="img/a3.jpeg" alt="ART Telecommunications" class="project-image">
+                    <div class="project-info">
+                        <h3 class="project-title">ART Telecommunications Agency</h3>
+                        <p class="project-location"><i class="fas fa-map-marker-alt"></i> Yaoundé, Cameroon • 2021</p>
+                        <div class="project-tags">
+                            <span class="tag">Government</span>
+                            <span class="tag">Glass Facade</span>
+                            <span class="tag">Modern</span>
+                        </div>
+                        <div class="gallery-preview">
+                            <img src="img/a4.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/a5.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/a6.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/a1.jpeg" alt="Gallery" class="gallery-thumb">
+                        </div>
+                        <button class="view-all-btn" onclick="openGallery('art')">View All Photos</button>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <img src="img/b2.jpeg" alt="Aris Grand Tower" class="project-image">
+                    <div class="project-info">
+                        <h3 class="project-title">Aris Grand Tower</h3>
+                        <p class="project-location"><i class="fas fa-map-marker-alt"></i> Istanbul, Turkey • 2016</p>
+                        <div class="project-tags">
+                            <span class="tag">Residential</span>
+                            <span class="tag">High-Rise</span>
+                            <span class="tag">Turkey</span>
+                        </div>
+                        <div class="gallery-preview">
+                            <img src="img/b3.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/b4.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/b5.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/b1.jpeg" alt="Gallery" class="gallery-thumb">
+                        </div>
+                        <button class="view-all-btn" onclick="openGallery('aris')">View All Photos</button>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <img src="img/c1.jpeg" alt="Pharmaceutical Administration" class="project-image">
+                    <div class="project-info">
+                        <h3 class="project-title">Pharmaceutical Administration</h3>
+                        <p class="project-location"><i class="fas fa-map-marker-alt"></i> Ankara, Turkey • 2012</p>
+                        <div class="project-tags">
+                            <span class="tag">Government</span>
+                            <span class="tag">Composite Panels</span>
+                            <span class="tag">Administrative</span>
+                        </div>
+                        <div class="gallery-preview">
+                            <img src="img/c2.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/c3.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/c4.JPG" alt="Gallery" class="gallery-thumb">
+                            <img src="img/c5.JPG" alt="Gallery" class="gallery-thumb">
+                        </div>
+                        <button class="view-all-btn" onclick="openGallery('pharma')">View All Photos</button>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card">
+                    <img src="img/d1.jpeg" alt="Restaurant Project" class="project-image">
+                    <div class="project-info">
+                        <h3 class="project-title">Seref Büryan Restaurant</h3>
+                        <p class="project-location"><i class="fas fa-map-marker-alt"></i> Istanbul, Turkey • 2019</p>
+                        <div class="project-tags">
+                            <span class="tag">Commercial</span>
+                            <span class="tag">Restaurant</span>
+                            <span class="tag">Interior</span>
+                        </div>
+                        <div class="gallery-preview">
+                            <img src="img/d2.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/d3.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/d4.jpg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/d1.jpeg" alt="Gallery" class="gallery-thumb">
+                        </div>
+                        <button class="view-all-btn" onclick="openGallery('restaurant')">View All Photos</button>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card">
+                    <img src="img/f1.jpg" alt="Business Center" class="project-image">
+                    <div class="project-info">
+                        <h3 class="project-title">Istanbul Business Center</h3>
+                        <p class="project-location"><i class="fas fa-map-marker-alt"></i> Istanbul, Turkey • 2008</p>
+                        <div class="project-tags">
+                            <span class="tag">Commercial</span>
+                            <span class="tag">Business</span>
+                            <span class="tag">Corporate</span>
+                        </div>
+                        <div class="gallery-preview">
+                            <img src="img/f2.jpg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/f3.JPG" alt="Gallery" class="gallery-thumb">
+                            <img src="img/f4.JPG" alt="Gallery" class="gallery-thumb">
+                            <img src="img/f5.jpg" alt="Gallery" class="gallery-thumb">
+                        </div>
+                        <button class="view-all-btn" onclick="openGallery('business')">View All Photos</button>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="project-card">
+                    <img src="img/r1.jpeg" alt="School Project" class="project-image">
+                    <div class="project-info">
+                        <h3 class="project-title">Astana International School</h3>
+                        <p class="project-location"><i class="fas fa-map-marker-alt"></i> Astana, Kazakhstan • 2007</p>
+                        <div class="project-tags">
+                            <span class="tag">Education</span>
+                            <span class="tag">School</span>
+                            <span class="tag">Kazakhstan</span>
+                        </div>
+                        <div class="gallery-preview">
+                            <img src="img/r2.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/r3.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/r4.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/r5.JPG" alt="Gallery" class="gallery-thumb">
+                        </div>
+                        <button class="view-all-btn" onclick="openGallery('school')">View All Photos</button>
+                    </div>
+                </div>
+
+                <!-- Project 8 -->
+                <div class="project-card">
+                    <img src="img/w1.jpeg" alt="Medical Center" class="project-image">
+                    <div class="project-info">
+                        <h3 class="project-title">Astana Medical Center</h3>
+                        <p class="project-location"><i class="fas fa-map-marker-alt"></i> Astana, Kazakhstan • 2007</p>
+                        <div class="project-tags">
+                            <span class="tag">Healthcare</span>
+                            <span class="tag">Medical</span>
+                            <span class="tag">Specialized</span>
+                        </div>
+                        <div class="gallery-preview">
+                            <img src="img/w2.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/w1.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/w2.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/w1.jpeg" alt="Gallery" class="gallery-thumb">
+                        </div>
+                        <button class="view-all-btn" onclick="openGallery('hospital')">View All Photos</button>
+                    </div>
+                </div>
+
+                <!-- Project 9 -->
+                <div class="project-card">
+                    <img src="img/ax1.jpg" alt="Current Russia Project" class="project-image">
+                    <div class="project-info">
+                        <h3 class="project-title">Current Project - Russia</h3>
+                        <p class="project-location"><i class="fas fa-map-marker-alt"></i> Russia • In Progress</p>
+                        <div class="project-tags">
+                            <span class="tag">Ongoing</span>
+                            <span class="tag">Large Scale</span>
+                            <span class="tag">Russia</span>
+                        </div>
+                        <div class="gallery-preview">
+                            <img src="img/ax2.jpg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/ax3.jpg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/ax4.jpg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/ax5.jpg" alt="Gallery" class="gallery-thumb">
+                        </div>
+                        <button class="view-all-btn" onclick="openGallery('russia')">View All Photos</button>
+                    </div>
+                </div>
+
+                <!-- Project 10 -->
+                <div class="project-card">
+                    <img src="img/e1.jpeg" alt="Turkish Embassy" class="project-image">
+                    <div class="project-info">
+                        <h3 class="project-title">Turkish Embassy</h3>
+                        <p class="project-location"><i class="fas fa-map-marker-alt"></i> Astana, Kazakhstan • 2006</p>
+                        <div class="project-tags">
+                            <span class="tag">Embassy</span>
+                            <span class="tag">Government</span>
+                            <span class="tag">Diplomatic</span>
+                        </div>
+                        <div class="gallery-preview">
+                            <img src="img/e2.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/e3.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/e4.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/e5.jpeg" alt="Gallery" class="gallery-thumb">
+                        </div>
+                        <button class="view-all-btn" onclick="openGallery('embassy')">View All Photos</button>
+                    </div>
+                </div>
+
+                <!-- Project 11 -->
+                <div class="project-card">
+                    <img src="img/ı1.jpeg" alt="Governor Office" class="project-image">
+                    <div class="project-info">
+                        <h3 class="project-title">Governor's Office Building</h3>
+                        <p class="project-location"><i class="fas fa-map-marker-alt"></i> Kostanay, Kazakhstan • 2006</p>
+                        <div class="project-tags">
+                            <span class="tag">Government</span>
+                            <span class="tag">Administrative</span>
+                            <span class="tag">Kazakhstan</span>
+                        </div>
+                        <div class="gallery-preview">
+                            <img src="img/ı2.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/ı3.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/ı1.jpeg" alt="Gallery" class="gallery-thumb">
+                            <img src="img/ı2.jpeg" alt="Gallery" class="gallery-thumb">
+                        </div>
+                        <button class="view-all-btn" onclick="openGallery('governor')">View All Photos</button>
+                    </div>
+                </div>
+
+                <!-- Project 12 -->
+                <div class="project-card">
+                    <img src="img/h1.jpeg" alt="Hotel Project" class="project-image">
+                    <div class="project-info">
+                        <h3 class="project-title">Astana Hotel</h3>
+                        <p class="project-location"><i class="fas fa-map-marker-alt"></i> Astana, Kazakhstan • 2002</p>
+                        <div class="project-tags">
+                            <span class="tag">Hospitality</span>
+                            <span class="tag">Hotel</span>
+                            <span class="tag">Commercial</span>
+                        </div>
+                        <div class="gallery-preview">
+                            <img src="img/h2.JPG" alt="Gallery" class="gallery-thumb">
+                            <img src="img/h3.JPG" alt="Gallery" class="gallery-thumb">
+                            <img src="img/h4.JPG" alt="Gallery" class="gallery-thumb">
+                            <img src="img/h5.jpg" alt="Gallery" class="gallery-thumb">
+                        </div>
+                        <button class="view-all-btn" onclick="openGallery('hotel')">View All Photos</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Contact Us</h2>
+            <div class="contact-content">
+                <p style="font-size: 1.1rem; margin-bottom: 2rem;">Ready to start your next project? Get in touch with us today.</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>tariksnl01864@gmail.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <h3>Global Presence</h3>
+                        <p>Turkey • Cameroon • Kazakhstan • Russia</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-award"></i>
+                        <h3>Experience</h3>
+                        <p>15+ Years • 200+ Projects</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 ALFAS - Aluminum & Facade Systems. All rights reserved.</p>
+            <p>Designed with excellence in mind</p>
+        </div>
+    </footer>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; overflow-y: auto;">
+        <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 2rem;">
+            <button onclick="closeGallery()" style="position: absolute; top: 1rem; right: 1rem; background: rgba(255,255,255,0.2); border: none; color: white; font-size: 2rem; cursor: pointer; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; z-index: 10001;">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="galleryContent" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 4rem;">
+                <!-- Gallery images will be loaded here -->
+            </div>
+        </div>
     </div>
-  </footer>
-  <!-- #footer -->
 
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
 
-  <!-- Required JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="lib/superfish/hoverIntent.js"></script>
-  <script src="lib/superfish/superfish.min.js"></script>
-  <script src="lib/morphext/morphext.min.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
-  <script src="lib/stickyjs/sticky.js"></script>
-  <script src="lib/easing/easing.js"></script>
+    <script>
+        // Language translations
+        const translations = {
+            en: {
+                // Navigation
+                home: "Home",
+                about: "About",
+                portfolio: "Portfolio",
+                contact: "Contact",
+                
+                // Hero section
+                heroTitle: "ALFAS",
+                heroSubtitle: "Premier Aluminum & Facade Systems - Transforming architectural visions into reality with innovative solutions across the globe",
+                viewWork: "View Our Work",
+                
+                // About section
+                aboutTitle: "About ALFAS",
+                aboutText1: "With over 15 years of experience in the aluminum industry, ALFAS has established itself as a leading provider of innovative facade solutions, composite panels, and architectural systems worldwide.",
+                aboutText2: "We have undertaken numerous projects across continents, from Africa to Europe, Asia to the Americas. Our commitment to precision, quality, and innovation has made us the trusted partner for architects, contractors, and developers.",
+                aboutText3: "Our expertise includes aluminum glass facade systems, composite facade cladding, pergola systems, and comprehensive project management services.",
+                
+                // Portfolio section
+                portfolioTitle: "Our Portfolio",
+                portfolioSubtitle: "Showcasing excellence in aluminum facade systems across the globe",
+                viewAllPhotos: "View All Photos",
+                
+                // Projects
+                financeProject: "Ministry of Finance Building",
+                artProject: "ART Telecommunications Agency",
+                arisProject: "Aris Grand Tower", 
+                pharmaProject: "Pharmaceutical Administration",
+                restaurantProject: "Seref Büryan Restaurant",
+                businessProject: "Istanbul Business Center",
+                schoolProject: "Astana International School",
+                hospitalProject: "Astana Medical Center",
+                russiaProject: "Current Project - Russia",
+                embassyProject: "Turkish Embassy",
+                governorProject: "Governor's Office Building",
+                hotelProject: "Astana Hotel",
+                
+                // Tags
+                government: "Government",
+                facade: "Facade Systems",
+                africa: "Africa",
+                glass: "Glass Facade",
+                modern: "Modern",
+                residential: "Residential",
+                highrise: "High-Rise",
+                turkey: "Turkey",
+                composite: "Composite Panels",
+                administrative: "Administrative",
+                commercial: "Commercial",
+                restaurant: "Restaurant",
+                interior: "Interior",
+                business: "Business",
+                corporate: "Corporate",
+                education: "Education",
+                school: "School",
+                kazakhstan: "Kazakhstan",
+                healthcare: "Healthcare",
+                medical: "Medical",
+                specialized: "Specialized",
+                ongoing: "Ongoing",
+                largescale: "Large Scale",
+                russia: "Russia",
+                embassy: "Embassy",
+                diplomatic: "Diplomatic",
+                hospitality: "Hospitality",
+                hotel: "Hotel",
+                
+                // Contact section
+                contactTitle: "Contact Us",
+                contactSubtitle: "Ready to start your next project? Get in touch with us today.",
+                email: "Email",
+                globalPresence: "Global Presence",
+                experience: "Experience",
+                years: "15+ Years • 200+ Projects",
+                
+                // Footer
+                footerText: "© 2024 ALFAS - Aluminum & Facade Systems. All rights reserved.",
+                footerTagline: "Designed with excellence in mind"
+            },
+            
+            ru: {
+                // Navigation
+                home: "Главная",
+                about: "О нас",
+                portfolio: "Портфолио",
+                contact: "Контакты",
+                
+                // Hero section
+                heroTitle: "ALFAS",
+                heroSubtitle: "Премиальные алюминиевые и фасадные системы - Превращаем архитектурные видения в реальность с инновационными решениями по всему миру",
+                viewWork: "Посмотреть наши работы",
+                
+                // About section
+                aboutTitle: "О компании ALFAS",
+                aboutText1: "Имея более 15 лет опыта в алюминиевой промышленности, ALFAS зарекомендовала себя как ведущий поставщик инновационных фасадных решений, композитных панелей и архитектурных систем по всему миру.",
+                aboutText2: "Мы реализовали множество проектов на всех континентах, от Африки до Европы, от Азии до Америки. Наша приверженность точности, качеству и инновациям сделала нас надежным партнером для архитекторов, подрядчиков и застройщиков.",
+                aboutText3: "Наша экспертиза включает алюминиевые стеклянные фасадные системы, композитную фасадную облицовку, перголы и комплексные услуги по управлению проектами.",
+                
+                // Portfolio section
+                portfolioTitle: "Наше портфолио",
+                portfolioSubtitle: "Демонстрируем превосходство в алюминиевых фасадных системах по всему миру",
+                viewAllPhotos: "Посмотреть все фото",
+                
+                // Projects
+                financeProject: "Здание Министерства финансов",
+                artProject: "Агентство телекоммуникаций ART",
+                arisProject: "Башня Арис Гранд",
+                pharmaProject: "Фармацевтическая администрация",
+                restaurantProject: "Ресторан Шереф Бюрян",
+                businessProject: "Стамбульский бизнес-центр",
+                schoolProject: "Международная школа Астаны",
+                hospitalProject: "Медицинский центр Астаны",
+                russiaProject: "Текущий проект - Россия",
+                embassyProject: "Посольство Турции",
+                governorProject: "Здание администрации губернатора",
+                hotelProject: "Отель Астана",
+                
+                // Tags  
+                government: "Правительство",
+                facade: "Фасадные системы",
+                africa: "Африка",
+                glass: "Стеклянный фасад",
+                modern: "Современный",
+                residential: "Жилой",
+                highrise: "Высотный",
+                turkey: "Турция",
+                composite: "Композитные панели",
+                administrative: "Административный",
+                commercial: "Коммерческий",
+                restaurant: "Ресторан",
+                interior: "Интерьер",
+                business: "Бизнес",
+                corporate: "Корпоративный",
+                education: "Образование",
+                school: "Школа",
+                kazakhstan: "Казахстан",
+                healthcare: "Здравоохранение", 
+                medical: "Медицинский",
+                specialized: "Специализированный",
+                ongoing: "В процессе",
+                largescale: "Крупномасштабный",
+                russia: "Россия",
+                embassy: "Посольство",
+                diplomatic: "Дипломатический",
+                hospitality: "Гостиничный бизнес",
+                hotel: "Отель",
+                
+                // Contact section
+                contactTitle: "Свяжитесь с нами",
+                contactSubtitle: "Готовы начать свой следующий проект? Свяжитесь с нами сегодня.",
+                email: "Электронная почта",
+                globalPresence: "Глобальное присутствие",
+                experience: "Опыт",
+                years: "15+ лет • 200+ проектов",
+                
+                // Footer
+                footerText: "© 2024 ALFAS - Алюминиевые и фасадные системы. Все права защищены.",
+                footerTagline: "Разработано с превосходством в уме"
+            },
+            
+            tr: {
+                // Navigation
+                home: "Ana Sayfa",
+                about: "Hakkımızda",
+                portfolio: "Portföy",
+                contact: "İletişim",
+                
+                // Hero section
+                heroTitle: "ALFAS",
+                heroSubtitle: "Premier Alüminyum ve Cephe Sistemleri - Mimari vizyonları dünya çapında yenilikçi çözümlerle gerçeğe dönüştürüyoruz",
+                viewWork: "Çalışmalarımızı Görün",
+                
+                // About section
+                aboutTitle: "ALFAS Hakkında",
+                aboutText1: "Alüminyum endüstrisinde 15 yılı aşkın deneyimle, ALFAS kendisini dünya çapında yenilikçi cephe çözümleri, kompozit paneller ve mimari sistemlerin önde gelen sağlayıcısı olarak kurmuştur.",
+                aboutText2: "Afrika'dan Avrupa'ya, Asya'dan Amerika'ya kadar kıtalarda sayısız proje üstlendik. Hassasiyet, kalite ve inovasyona olan bağlılığımız bizi mimarlar, müteahhitler ve geliştiriciler için güvenilir ortak haline getirmiştir.",
+                aboutText3: "Uzmanlığımız alüminyum cam cephe sistemleri, kompozit cephe kaplaması, pergola sistemleri ve kapsamlı proje yönetimi hizmetlerini içerir.",
+                
+                // Portfolio section
+                portfolioTitle: "Portföyümüz",
+                portfolioSubtitle: "Dünya çapında alüminyum cephe sistemlerinde mükemmelliği sergiliyoruz",
+                viewAllPhotos: "Tüm Fotoğrafları Görün",
+                
+                // Projects
+                financeProject: "Maliye Bakanlığı Binası",
+                artProject: "ART Telekomünikasyon Ajansı",
+                arisProject: "Aris Grand Tower",
+                pharmaProject: "İlaç İdaresi",
+                restaurantProject: "Şeref Büryan Restoranı",
+                businessProject: "İstanbul İş Merkezi",
+                schoolProject: "Astana Uluslararası Okulu",
+                hospitalProject: "Astana Tıp Merkezi",
+                russiaProject: "Mevcut Proje - Rusya",
+                embassyProject: "Türkiye Büyükelçiliği",
+                governorProject: "Valilik Binası",
+                hotelProject: "Astana Oteli",
+                
+                // Tags
+                government: "Devlet",
+                facade: "Cephe Sistemleri",
+                africa: "Afrika",
+                glass: "Cam Cephe",
+                modern: "Modern",
+                residential: "Konut",
+                highrise: "Yüksek Katlı",
+                turkey: "Türkiye",
+                composite: "Kompozit Paneller",
+                administrative: "İdari",
+                commercial: "Ticari",
+                restaurant: "Restoran",
+                interior: "İç Mekan",
+                business: "İş",
+                corporate: "Kurumsal",
+                education: "Eğitim",
+                school: "Okul",
+                kazakhstan: "Kazakistan",
+                healthcare: "Sağlık",
+                medical: "Tıbbi",
+                specialized: "Özelleşmiş",
+                ongoing: "Devam Eden",
+                largescale: "Büyük Ölçekli",
+                russia: "Rusya",
+                embassy: "Büyükelçilik",
+                diplomatic: "Diplomatik",
+                hospitality: "Konaklama",
+                hotel: "Otel",
+                
+                // Contact section
+                contactTitle: "Bize Ulaşın",
+                contactSubtitle: "Bir sonraki projenizi başlatmaya hazır mısınız? Bugün bizimle iletişime geçin.",
+                email: "E-posta",
+                globalPresence: "Küresel Varlık",
+                experience: "Deneyim",
+                years: "15+ Yıl • 200+ Proje",
+                
+                // Footer
+                footerText: "© 2024 ALFAS - Alüminyum ve Cephe Sistemleri. Tüm hakları saklıdır.",
+                footerTagline: "Mükemmellik düşüncesiyle tasarlandı"
+            }
+        };
 
-  <!-- Template Specisifc Custom Javascript File -->
-  <script src="js/custom.js"></script>
-  <script src="contactform/contactform.js"></script>
+        let currentLanguage = 'en';
 
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('languageDropdown');
+            dropdown.classList.toggle('show');
+        }
 
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update language button
+            const langBtn = document.querySelector('.language-btn');
+            const flagIcon = langBtn.querySelector('.flag-icon');
+            const langText = langBtn.querySelector('span');
+            
+            flagIcon.className = `flag-icon flag-${lang}`;
+            langText.textContent = lang.toUpperCase();
+            
+            // Update active language option
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            event.target.closest('.language-option').classList.add('active');
+            
+            // Close dropdown
+            document.getElementById('languageDropdown').classList.remove('show');
+            
+            // Translate content
+            translateContent(lang);
+        }
+
+        function translateContent(lang) {
+            const t = translations[lang];
+            
+            // Navigation
+            document.querySelector('a[href="#home"]').textContent = t.home;
+            document.querySelector('a[href="#about"]').textContent = t.about;
+            document.querySelector('a[href="#portfolio"]').textContent = t.portfolio;
+            document.querySelector('a[href="#contact"]').textContent = t.contact;
+            
+            // Hero section
+            document.querySelector('.hero h1').textContent = t.heroTitle;
+            document.querySelector('.hero p').textContent = t.heroSubtitle;
+            document.querySelector('.cta-button').textContent = t.viewWork;
+            
+            // About section
+            document.querySelector('#about .section-title').textContent = t.aboutTitle;
+            const aboutTexts = document.querySelectorAll('.about-text p');
+            aboutTexts[0].textContent = t.aboutText1;
+            aboutTexts[1].textContent = t.aboutText2;
+            aboutTexts[2].textContent = t.aboutText3;
+            
+            // Portfolio section
+            document.querySelector('#portfolio .section-title').textContent = t.portfolioTitle;
+            document.querySelector('#portfolio .container p').textContent = t.portfolioSubtitle;
+            
+            // Project titles
+            const projectTitles = document.querySelectorAll('.project-title');
+            projectTitles[0].textContent = t.financeProject;
+            projectTitles[1].textContent = t.artProject;
+            projectTitles[2].textContent = t.arisProject;
+            projectTitles[3].textContent = t.pharmaProject;
+            projectTitles[4].textContent = t.restaurantProject;
+            projectTitles[5].textContent = t.businessProject;
+            projectTitles[6].textContent = t.schoolProject;
+            projectTitles[7].textContent = t.hospitalProject;
+            projectTitles[8].textContent = t.russiaProject;
+            projectTitles[9].textContent = t.embassyProject;
+            projectTitles[10].textContent = t.governorProject;
+            projectTitles[11].textContent = t.hotelProject;
+            
+            // View all photos buttons
+            document.querySelectorAll('.view-all-btn').forEach(btn => {
+                btn.textContent = t.viewAllPhotos;
+            });
+            
+            // Tags
+            document.querySelectorAll('.tag').forEach(tag => {
+                const text = tag.textContent.toLowerCase();
+                if (t[text.replace(/\s+/g, '').replace('-', '')]) {
+                    tag.textContent = t[text.replace(/\s+/g, '').replace('-', '')];
+                }
+            });
+            
+            // Contact section
+            document.querySelector('#contact .section-title').textContent = t.contactTitle;
+            document.querySelector('.contact-content p').textContent = t.contactSubtitle;
+            
+            const contactItems = document.querySelectorAll('.contact-item h3');
+            contactItems[0].textContent = t.email;
+            contactItems[1].textContent = t.globalPresence;
+            contactItems[2].textContent = t.experience;
+            
+            document.querySelector('.contact-item p:last-child').textContent = t.years;
+            
+            // Footer
+            const footerPs = document.querySelectorAll('.footer p');
+            footerPs[0].textContent = t.footerText;
+            footerPs[1].textContent = t.footerTagline;
+        }
+
+        // Close language dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.language-selector')) {
+                document.getElementById('languageDropdown').classList.remove('show');
+            }
+        });
+
+        // Gallery data
+        const galleries = {
+            finance: ['img/g1.jpg', 'img/g2.jpg', 'img/g3.jpeg', 'img/g4.jpeg', 'img/g6.jpeg', 'img/g7.jpeg', 'img/g8.jpg', 'img/g9.jpg', 'img/g10.JPG', 'img/g11.PNG', 'img/g12.JPG', 'img/g13.jpg'],
+            art: ['img/a1.jpeg', 'img/a2.jpeg', 'img/a3.jpeg', 'img/a4.jpeg', 'img/a5.jpeg', 'img/a6.jpeg', 'img/a7.jpeg', 'img/a8.jpeg', 'img/a9.jpeg', 'img/a10.jpg', 'img/a11.jpg'],
+            aris: ['img/b1.jpeg', 'img/b2.jpeg', 'img/b3.jpeg', 'img/b4.jpeg', 'img/b5.jpeg', 'img/b6.jpg', 'img/b7.jpg', 'img/b8.jpg'],
+            pharma: ['img/c1.jpeg', 'img/c2.jpeg', 'img/c3.jpeg', 'img/c4.JPG', 'img/c5.JPG'],
+            restaurant: ['img/d1.jpeg', 'img/d2.jpeg', 'img/d3.jpeg', 'img/d4.jpg'],
+            business: ['img/f1.jpg', 'img/f2.jpg', 'img/f3.JPG', 'img/f4.JPG', 'img/f5.jpg', 'img/f6.JPG', 'img/f7.JPG'],
+            school: ['img/r1.jpeg', 'img/r2.jpeg', 'img/r3.jpeg', 'img/r4.jpeg', 'img/r5.JPG', 'img/r6.JPG'],
+            hospital: ['img/w1.jpeg', 'img/w2.jpeg'],
+            russia: ['img/ax1.jpg', 'img/ax2.jpg', 'img/ax3.jpg', 'img/ax4.jpg', 'img/ax5.jpg', 'img/ax6.jpg', 'img/ax7.jpeg'],
+            embassy: ['img/e1.jpeg', 'img/e2.jpeg', 'img/e3.jpeg', 'img/e4.jpeg', 'img/e5.jpeg', 'img/e6.jpeg', 'img/e7.jpeg'],
+            governor: ['img/ı1.jpeg', 'img/ı2.jpeg', 'img/ı3.jpeg'],
+            hotel: ['img/h1.jpeg', 'img/h2.JPG', 'img/h3.JPG', 'img/h4.JPG', 'img/h5.jpg', 'img/h6.jpg']
+        };
+
+        function openGallery(galleryName) {
+            const modal = document.getElementById('galleryModal');
+            const content = document.getElementById('galleryContent');
+            const images = galleries[galleryName] || [];
+            
+            content.innerHTML = '';
+            
+            images.forEach(imageSrc => {
+                const imgContainer = document.createElement('div');
+                imgContainer.style.cssText = `
+                    position: relative;
+                    border-radius: 15px;
+                    overflow: hidden;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                    transition: transform 0.3s ease;
+                `;
+                
+                const img = document.createElement('img');
+                img.src = imageSrc;
+                img.style.cssText = `
+                    width: 100%;
+                    height: 250px;
+                    object-fit: cover;
+                    transition: transform 0.3s ease;
+                `;
+                
+                imgContainer.appendChild(img);
+                
+                imgContainer.addEventListener('mouseenter', () => {
+                    imgContainer.style.transform = 'scale(1.05)';
+                });
+                
+                imgContainer.addEventListener('mouseleave', () => {
+                    imgContainer.style.transform = 'scale(1)';
+                });
+                
+                content.appendChild(imgContainer);
+            });
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGallery() {
+            const modal = document.getElementById('galleryModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close gallery when clicking outside
+        document.getElementById('galleryModal').addEventListener('click', (e) => {
+            if (e.target.id === 'galleryModal') {
+                closeGallery();
+            }
+        });
+
+        // Close gallery with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeGallery();
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Back to top button functionality
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        // Mobile menu functionality
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        mobileMenu.addEventListener('click', () => {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all project cards and sections
+        document.querySelectorAll('.project-card, .section').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Thumbnail hover effects
+        document.querySelectorAll('.gallery-thumb').forEach(thumb => {
+            thumb.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // Find the project card and get its gallery name
+                const projectCard = thumb.closest('.project-card');
+                const button = projectCard.querySelector('.view-all-btn');
+                if (button) {
+                    button.click();
+                }
+            });
+        });
+    </script>
 </body>
-
 </html>
